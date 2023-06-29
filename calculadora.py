@@ -94,9 +94,15 @@ class Calculadora(tk.Tk):
 
     def _evento_evaluar(self):
         #eval evalua la expresion str como una expresión aritmética
-        resultado = str(eval(self.expresion))
-        self.entrada_texto.set(resultado)
-        self.expresion=''
+        try:
+            if self.expresion:
+                resultado = str(eval(self.expresion))
+                self.entrada_texto.set(resultado)
+        except Exception as e:
+            messagebox.showerror('Error', f'Ocurrió un error: {e}')
+            self.entrada_texto.set('')
+        finally:
+           self.expresion=''
 
     def _evento_limpiar(self):
         self.expresion = ''
