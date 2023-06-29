@@ -88,14 +88,13 @@ class Calculadora(tk.Tk):
         boton_punto = tk.Button(botones_frame, text='.', width=10, height=3, bd=0, bg = '#eee', cursor= 'hand2', command=lambda: self._evento_click('.'))
         boton_punto.grid(row=4, column=2, padx=1, pady=1)
 
-        boton_evaluar = tk.Button(botones_frame, text='=', width=10, height=3, bd=0, bg ='#eee', cursor='hand2', command=self._evento_evaluar())
+        boton_evaluar = tk.Button(botones_frame, text='=', width=10, height=3, bd=0, bg ='#eee', cursor='hand2', command=self._evento_evaluar)
         boton_evaluar.grid(row=4, column=3, padx=1, pady=1)
 
 
     def _evento_evaluar(self):
         #eval evalua la expresion str como una expresión aritmética
-        nuevo = f'{self.expresion}'
-        resultado = str(eval(nuevo))
+        resultado = str(eval(self.expresion))
         self.entrada_texto.set(resultado)
         self.expresion=''
 
